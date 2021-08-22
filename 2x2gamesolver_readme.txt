@@ -19,3 +19,6 @@ A red arrow labelled "s.d." indicates strict dominance, an amber arrow labelled 
 Pure strategy Nash equilibria (there can be more than one) will be highlighted by a black frame.
 Mixed strategy Nash equilibria will be displayed by means of probabilities for U (p), D (1-p), L (q) and R (1-q), rounded to two significant digits.
 In case of mixed strategies, the values of the game to the two players will also be displayed.
+
+
+Version 1.0, August 2021
