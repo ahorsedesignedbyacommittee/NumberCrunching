@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.messagebox
 from numpy import array
 
 #----------------------- Setting up GUI --------------------------------
@@ -63,20 +64,26 @@ def get_row_payoffs():
 
     
 def insert_zero_sum_payoffs():
-    row_payoffs = get_row_payoffs()
-    ul2entry.insert(0, -row_payoffs[0])
-    ur2entry.insert(0, -row_payoffs[1])
-    dl2entry.insert(0, -row_payoffs[2])
-    dr2entry.insert(0, -row_payoffs[3])
+    try:
+        row_payoffs = get_row_payoffs()
+        ul2entry.insert(0, -row_payoffs[0])
+        ur2entry.insert(0, -row_payoffs[1])
+        dl2entry.insert(0, -row_payoffs[2])
+        dr2entry.insert(0, -row_payoffs[3])
+    except ValueError:
+        warning1 = tkinter.messagebox.showinfo(message="Please fill in all Row player fields.")
     return
     
 def insert_constant_sum_payoffs():
-    row_payoffs = get_row_payoffs()
-    sum = float(constantsumentry.get())
-    ul2entry.insert(0, sum-float(row_payoffs[0]))
-    ur2entry.insert(0, sum-float(row_payoffs[1]))
-    dl2entry.insert(0, sum-float(row_payoffs[2]))
-    dr2entry.insert(0, sum-float(row_payoffs[3]))
+    try:
+        row_payoffs = get_row_payoffs()
+        sum = float(constantsumentry.get())
+        ul2entry.insert(0, sum-float(row_payoffs[0]))
+        ur2entry.insert(0, sum-float(row_payoffs[1]))
+        dl2entry.insert(0, sum-float(row_payoffs[2]))
+        dr2entry.insert(0, sum-float(row_payoffs[3]))
+    except ValueError:
+        warning2 = tkinter.messagebox.showinfo(message="Please fill in all Row player fields.")
     return
     
 zerosumbutton = tk.Button(text="Zero sum", command=insert_zero_sum_payoffs, width=10)
@@ -91,15 +98,19 @@ constantsumentry.place(x = 110, y = 430)
 
 #------------- Generating payoff matrixes for both players -------------
 def get_payoffs():
-    p_row = array([
-        [float(ul1entry.get()), float(dl1entry.get())],
-        [float(ur1entry.get()), float(dr1entry.get())],
-        ])
-    p_column = array([
-        [float(ul2entry.get()), float(dl2entry.get())],
-        [float(ur2entry.get()), float(dr2entry.get())],
-        ])    
-    return [p_row, p_column]
+    try:
+        p_row = array([
+            [float(ul1entry.get()), float(dl1entry.get())],
+            [float(ur1entry.get()), float(dr1entry.get())],
+            ])
+        p_column = array([
+            [float(ul2entry.get()), float(dl2entry.get())],
+            [float(ur2entry.get()), float(dr2entry.get())],
+            ])    
+        return [p_row, p_column]
+    except ValueError:
+        msgwrng3 = "Please ensure all fields are filled before proceeding."
+        warning3 = tkinter.messagebox.showinfo(message=msgwrng3)
     
 def dom_checker(p_row, p_column):
     #This function runs dominance (weak or strict) tests for both players
@@ -240,24 +251,26 @@ def oddment_painter (p_here, q_here):
 def calculate():
     #This function performs the calculations by calling a series of other
     #functions above that do parts of the calculcations
-    payoffs_row = get_payoffs()[0]
-    payoffs_column = get_payoffs()[1]
-    dic_of_dominance = dom_checker(payoffs_row, payoffs_column)
-    dic_of_pure_equilibria = pure_equil_checker(payoffs_row, payoffs_column)
-    if sum(dic_of_dominance.values()) > 0:
-        arrow_painter(dic_of_dominance)
-    if sum(dic_of_pure_equilibria.values()) > 0:
-        pure_equil_painter(dic_of_pure_equilibria)
-    p = mixed_equil_checker(payoffs_row, payoffs_column)[0]
-    q = mixed_equil_checker(payoffs_row, payoffs_column)[1]
-    if 0 < p < 1 and 0 < q < 1:
-        oddment_painter(p, q)
-        value_row = q * payoffs_row[0, 0] + (1 - q) * payoffs_row[1, 0]
-        value_column = p * payoffs_column[0, 0] + (1 - p) * payoffs_column[0, 1]
-        vlt = f"Value Row: {round(value_row, 2)}\nValue Column: {round(value_column, 2)}"
-        value_label = tk.Label(text = vlt)
-        value_label.place(x = 320, y = 380)
-    return
+    try:
+        payoffs_row = get_payoffs()[0]
+        payoffs_column = get_payoffs()[1]
+        dic_of_dominance = dom_checker(payoffs_row, payoffs_column)
+        dic_of_pure_equilibria = pure_equil_checker(payoffs_row, payoffs_column)
+        if sum(dic_of_dominance.values()) > 0:
+            arrow_painter(dic_of_dominance)
+        if sum(dic_of_pure_equilibria.values()) > 0:
+            pure_equil_painter(dic_of_pure_equilibria)
+        p = mixed_equil_checker(payoffs_row, payoffs_column)[0]
+        q = mixed_equil_checker(payoffs_row, payoffs_column)[1]
+        if 0 < p < 1 and 0 < q < 1:
+            oddment_painter(p, q)
+            value_row = q * payoffs_row[0, 0] + (1 - q) * payoffs_row[1, 0]
+            value_column = p * payoffs_column[0, 0] + (1 - p) * payoffs_column[0, 1]
+            vlt = f"Value Row: {round(value_row, 2)}\nValue Column: {round(value_column, 2)}"
+            value_label = tk.Label(text = vlt)
+            value_label.place(x = 320, y = 380)
+    except TypeError:
+        return
 
 #------------------------------ Main program ---------------------------
 calculatebutton = tk.Button(text="Calculate", command=calculate, width=10)
