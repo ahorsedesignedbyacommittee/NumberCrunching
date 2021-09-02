@@ -39,8 +39,10 @@ pathstopi.py is a module that offers little implementations of two different ite
 - bbp()
 - montecarlopi()
 
-Both take an integer argument as input, corresponding to the number of iterations you wish to run. For good results, large values should be chosen, at least a few thousand. They both return a tuple of two floats as output; the first is the computed approximation to pi, the second the absolute of the difference to the value of pi as provided by Python's math module (which needs to be imported for this reason).
+Both take an integer argument as input, corresponding to the number of iterations you wish to run. They both return a tuple of two floats as output; the first is the computed approximation to pi, the second the absolute of the difference to the value of pi as provided by Python's math module (which needs to be imported for this reason).
 
-bbp() will use the Bailey-Borwein-Plouffe (BPP) algorithm, montecarlopi() a Monte Carlo algorithm which uses a simple Monte Carlo algorithm to iteratively compute approximations of pi by means of random "droplets" on a 1-1 Cartesian coordinate system. Note that the BPP algorithm will, unlike Monte Carlo, always produce the same approximation after running for the same number of iterations.
+bbp() relies on the Bailey-Borwein-Plouffe (BPP) algorithm, montecarlopi() on a Monte Carlo algorithm which iteratively generates random "droplets" that fall on a 1-1 Cartesian coordinate system. Note that the BPP algorithm will, unlike Monte Carlo, always produce the same approximation after running for the same number of iterations.
+
+BBP will produce good results very quickly (difference to actual value to pi is less than 10^(-8) after five iterations); for Monte Carlo, a much higher number of iterations is needed, and the difference to the actual value of pi can still be considerable even after thousands of iterations. Nonetheless, Monte Carlo is, in a way, cooler in its simplistic agnosticism.
 
 Version 2.8, May 2021
