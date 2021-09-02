@@ -32,6 +32,8 @@ Version 1.1, August 2021
 
 -----------------------------------------------------
 
+## pathstopi
+
 pathstopi.py is a module that offers little implementations of two different iterative algorithms to compute approximations to pi. It includes two functions:
 
 - bbp()
