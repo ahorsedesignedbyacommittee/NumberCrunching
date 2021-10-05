@@ -3,7 +3,7 @@ Some slightly more mathematical applications
 
 --------------------------------------------------
 
-## 2x2gamesolver
+## 2x2gamesolver.py
 
 2x2gamesolver.py is a little program with GUI that applies game theory to solve simple 2x2 simultaneous (i.e., normal form) games from a game theoretical perspective.
 Games can be zero sum, constant sum (with a constant other than zero) or non-constant sum. Required imports are tkinter and Numpy arrays. 
@@ -30,7 +30,17 @@ In case of mixed strategies, the values of the game to the two players will also
 
 Version 1.1, August 2021
 
------------------------------------------------------
+--------------------------------------------------
+
+## 2x2gamesolver.c
+
+The same basic idea as 2x2gamesolver.py above, but in C, and with a text-based interface (adorned by a little ASCII art) in lieu of the fancy GUI. 
+This is still work in progress, the code isn't finished yet.
+
+Version 0.2, October 2021
+
+
+--------------------------------------------------
 
 ## pathstopi
 
