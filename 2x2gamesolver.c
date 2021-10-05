@@ -13,23 +13,18 @@ int main(void)
 	float payoffs[8]; //Generate empty payoff matrix
 	get_payoffs(payoffs); //Call function to fill payoff matrix
 	
-	printf("\nOverview of payoffs:\n"); //Print overview table of payoff values
-	for (int i = 0; i < 8; i++)
+	//Print overview table of payoff values
+	printf("\n\nOverview over collected payoffs:\n\n");
+	for (int x = 0; x < 8; x++)
 	{
-		if (i == 0)
-		{
-			printf("\nRow player\n");
-			printf("------------\n");
-		}
-		else if (i == 4)
-		{
-			printf("\nColumn player\n");
-			printf("------------\n");
-		}
-		printf("%c: %f\n", (char) i + 65, payoffs[i]);
+		if (x == 0)
+			printf("\nRow player:\n------------\n");
+		if (x == 4)
+			printf("\nColumn player:\n------------\n");
+		printf("%f		", payoffs[x]);
+		if (x % 2 == 1)
+			printf("\n");
 	}
-	
-	printf("\n");
 	
 	int dominance_array[4]; //Generate array of dominance variables
 	//dominance variable is 2 if corresponding pure strategy is strictly dominant,
@@ -45,6 +40,7 @@ int main(void)
 	char* pure_strategies[] = {"Up", "Down", "Left", "Right"}; //Array that assigns each numerical code for a pure strategy the name of that strategy
 	
 	//Print results of dominance check
+	printf("\nResults of dominance check:\n\n");
 	for (int j = 0; j < 4; j++)
 	{
 		if (dominance_array[j] == 2)
