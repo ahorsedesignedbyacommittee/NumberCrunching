@@ -4,7 +4,7 @@
 //Function prototypes
 void asciiart(void);
 void get_payoffs(float* matrix);
-
+int dominancechecker(float* pomatrix, int c1, int c2, int c3, int c4);
 
 
 int main(void)
@@ -27,6 +27,30 @@ int main(void)
 			printf("------------\n");
 		}
 		printf("%c: %f\n", (char) i + 65, payoffs[i]);
+	}
+	
+	printf("\n");
+	
+	int dominance_array[4]; //Generate array of dominance variables
+	//dominance variable is 2 if corresponding pure strategy is strictly dominant,
+	//1 if weakly dominant,
+	//0 otherwise
+	
+	
+	dominance_array[0] = dominancechecker(payoffs, 0, 2, 1, 3); //Dominance variable for UP
+	dominance_array[1] = dominancechecker(payoffs, 2, 0, 3, 1); //Dominance variable for DOWN
+	dominance_array[2] = dominancechecker(payoffs, 4, 5, 6, 7); //Dominance variable for LEFT
+	dominance_array[3] = dominancechecker(payoffs, 5, 4, 7, 6); //Dominance variable for RIGHT
+	
+	char* pure_strategies[] = {"Up", "Down", "Left", "Right"}; //Array that assigns each numerical code for a pure strategy the name of that strategy
+	
+	//Print results of dominance check
+	for (int j = 0; j < 4; j++)
+	{
+		if (dominance_array[j] == 2)
+			printf("%s is strictly dominant\n", pure_strategies[j]);
+		else if (dominance_array[j] == 1)
+			printf("%s is weakly dominant\n", pure_strategies[j]);
 	}
 	
 	return 0;
@@ -89,3 +113,14 @@ void get_payoffs(float* matrix) //This function fills the payoff matrix
 	
 	return;
 }
+
+int dominancechecker(float* pomatrix, int c1, int c2, int c3, int c4) //Checks a given strategy for strict or weak dominance
+{
+	if ( (pomatrix[c1] > pomatrix[c2]) && (pomatrix[c3] > pomatrix[c4]) )
+		return 2;
+	else if ( (pomatrix[c1] >= pomatrix[c2]) && (pomatrix[c3] >= pomatrix[c4]) )
+		return 1;
+	else
+		return 0;
+}
+
