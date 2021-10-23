@@ -35,9 +35,8 @@ Version 1.1, August 2021
 ## 2x2gamesolver.c
 
 The same basic idea as 2x2gamesolver.py above, but in C, and with a text-based interface in lieu of the fancy GUI. 
-This is still work in progress, the code isn't finished yet.
 
-Version 0.2, October 2021
+Version 1.0, October 2021
 
 
 --------------------------------------------------
