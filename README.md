@@ -28,7 +28,7 @@ Mixed strategy Nash equilibria will be displayed by means of probabilities for U
 In case of mixed strategies, the values of the game to the two players will also be displayed.
 
 
-Version 1.1, August 2021
+Version 2.0, January 2022
 
 --------------------------------------------------
 
