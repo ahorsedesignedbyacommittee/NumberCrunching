@@ -28,7 +28,7 @@ Mixed strategy Nash equilibria will be displayed by means of probabilities for U
 In case of mixed strategies, the values of the game to the two players will also be displayed.
 
 
-Version 2.0, January 2022
+### Version 2.0, January 2022
 
 --------------------------------------------------
 
@@ -36,22 +36,13 @@ Version 2.0, January 2022
 
 The same basic idea as 2x2gamesolver.py above, but in C, and with a text-based interface in lieu of the fancy GUI. 
 
-Version 1.0, October 2021
+### Version 1.0, October 2021
 
 
 --------------------------------------------------
 
-## pathstopi
+## eratosthenes.c
 
-pathstopi.py is a module that offers little implementations of two different iterative algorithms to compute approximations to pi. It includes two functions:
+A simple implementation of the classic "sieve of Eratosthenes" algorith to find primes. There's no user interaction; upon start, it will proceed to print all primes up to a predefined ceiling. It will also print the number of primes found. To change the ceiling, modify the CEILING macro in the preprocessor.
 
-- bbp()
-- montecarlopi()
-
-Both take an integer argument as input, corresponding to the number of iterations you wish to run. They both return a tuple of two floats as output; the first is the computed approximation to pi, the second the absolute of the difference to the value of pi as provided by Python's math module (which needs to be imported for this reason).
-
-bbp() relies on the Bailey-Borwein-Plouffe (BPP) algorithm, montecarlopi() on a Monte Carlo algorithm which iteratively generates random "droplets" that fall on a 1-1 Cartesian coordinate system. Note that the BPP algorithm will, unlike Monte Carlo, always produce the same approximation after running for the same number of iterations.
-
-BBP will produce good results very quickly (difference to actual value to pi is less than 10^(-8) after five iterations); for Monte Carlo, a much higher number of iterations is needed, and the difference to the actual value of pi can still be considerable even after thousands of iterations. Nonetheless, Monte Carlo is, in a way, cooler in its simplistic agnosticism.
-
-Version 2.8, May 2021
+### Version 1.0, June 2022
