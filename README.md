@@ -2,7 +2,6 @@
 Some slightly more mathematical applications
 
 --------------------------------------------------
-
 ## 2x2gamesolver.py
 
 2x2gamesolver.py is a little program with GUI that applies game theory to solve simple 2x2 simultaneous (i.e., normal form) games from a game theoretical perspective.
@@ -31,7 +30,6 @@ In case of mixed strategies, the values of the game to the two players will also
 ### Version 2.0, January 2022
 
 --------------------------------------------------
-
 ## 2x2gamesolver.c
 
 The same basic idea as 2x2gamesolver.py above, but in C, and with a text-based interface in lieu of the fancy GUI. 
@@ -40,9 +38,15 @@ The same basic idea as 2x2gamesolver.py above, but in C, and with a text-based i
 
 
 --------------------------------------------------
-
 ## eratosthenes.c
 
 A simple implementation of the classic "sieve of Eratosthenes" algorith to find primes. There's no user interaction; upon start, it will proceed to print all primes up to a predefined ceiling. It will also print the number of primes found. To change the ceiling, modify the CEILING macro in the preprocessor.
+
+### Version 1.0, June 2022
+
+--------------------------------------------------
+## quine.c
+
+I don't know if this counts, strictly speaking, as a quine, but this is my attempt at writing one.
 
 ### Version 1.0, June 2022
