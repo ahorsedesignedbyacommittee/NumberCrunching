@@ -4,7 +4,8 @@
 int main(void) {
 
     char c;
-    FILE *fp = fopen("quine.c", "r");
+    FILE *fp = fopen(__FILE__, "r");
     while ((c = fgetc(fp)) != EOF) putchar(c);
+    fclose(fp);
     return 0;
 }
