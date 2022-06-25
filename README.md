@@ -40,7 +40,7 @@ The same basic idea as 2x2gamesolver.py above, but in C, and with a text-based i
 --------------------------------------------------
 ## eratosthenes.c
 
-A simple implementation of the classic "sieve of Eratosthenes" algorith to find primes. There's no user interaction; upon start, it will proceed to print all primes up to a predefined ceiling. It will also print the number of primes found. To change the ceiling, modify the CEILING macro in the preprocessor.
+A simple implementation of the classic "sieve of Eratosthenes" algorithm to find primes. There's no user interaction; upon start, it will proceed to print all primes up to a predefined ceiling. It will also print the number of primes found. To change the ceiling, modify the CEILING macro in the preprocessor.
 
 ### Version 1.0, June 2022
 
