@@ -47,7 +47,7 @@ A simple implementation of the classic "sieve of Eratosthenes" algorithm to find
 --------------------------------------------------
 ## quine.c
 
-I don't know if this trick with a program reading itself as a file counts, strictly speaking, as a quine, but this is my attempt at writing one.
+I don't know if this trick with a program reading itself as a file counts, strictly speaking, as a quine, or if it'S too lame a trick, but this is my attempt.
 
 ### Version 1.1, June 2022
 
